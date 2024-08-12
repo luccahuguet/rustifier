@@ -9,3 +9,7 @@ install-wezterm:
         echo "This system is not Debian-based. Please install WezTerm manually:"; \
         echo "Visit https://wezfurlong.org/wezterm/installation.html for instructions."; \
     fi
+
+# Default recipe
+default:
+    @just install-wezterm

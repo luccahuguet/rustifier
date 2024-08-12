@@ -1,10 +1,10 @@
 install-basic-programs:
-    #!/usr/bin/env nu
-    let programs = ["zellij", "nushell", "helix", "yazi-fm"]
-    for program in $programs {
-        echo $"Installing ($program)..."
-        cargo install $program
-    }
+    #!/usr/bin/env bash
+    programs=("zellij" "nushell" "helix" "yazi-fm" "zoxide" "starship")
+    for program in "${programs[@]}"; do
+        echo "Installing $program..."
+        cargo install "$program"
+    done
 
 default:
     @just install-basic-programs

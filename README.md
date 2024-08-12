@@ -1,14 +1,14 @@
 # Rustifier
 
-Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities. It uses justfiles to install the programs.
+Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
 
-# todo
+## Todo List
 
-- [ ] fix helix install
-- [ ] check links
-- [ ] update yazelix readme
-- [ ] create yazelix video
-- [ ] say it's experimental, barely tested, only on my machine and should be used carefully
+- [x] Install just with cargo
+- [x] Check and fix links
+- [ ] Fix Helix installation
+- [ ] Update Yazelix README
+- [ ] Create Yazelix video
 
 ## Compatibility
 
@@ -18,8 +18,9 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ## Prerequisites
 
 - A Linux distribution (Debian-based recommended for full compatibility)
-- [Rust](https://www.rust-lang.org/tools/install) programming language
-- [Just](https://github.com/casey/just) command runner
+- Bash shell
+
+Note: Rust and Just will be automatically installed if not already present on your system.
 
 ## Installation
 
@@ -31,7 +32,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 2. Run the installation script:
    ```
-   just
+   ./setup.sh
    ```
 
 3. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
@@ -40,6 +41,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 The project uses a modular structure with separate justfiles for different components:
 
+- `setup.sh`: The main setup script that ensures Rust and Just are installed
 - `main.just`: The main justfile that orchestrates the installation process
 - `src/install_rust.just`: Handles Rust installation
 - `src/config_wez.just`: Configures WezTerm
@@ -58,6 +60,8 @@ WezTerm configuration lies in a separate repository: [wez-files](https://github.
 - [Zellij](https://github.com/zellij-org/zellij): Terminal workspace
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
 - [Helix](https://helix-editor.com): Text editor
+- [Starship](https://starship.rs): Cross-shell prompt
+- [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
 
 ### Optional Utilities (Expanded Installation)
 If you choose the expanded installation, the following will also be installed:
@@ -68,31 +72,34 @@ If you choose the expanded installation, the following will also be installed:
 - [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
 - [gitui](https://github.com/extrawurst/gitui): Terminal UI for git
 - [helix-term](https://github.com/helix-editor/helix): Terminal version of Helix editor
-- [markdown-oxide](https://github.com/dlaing/markdown-oxide): Markdown parser and renderer
+- [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide): Markdown parser and renderer
 - [mise](https://github.com/jdx/mise): Development tool version manager
 - [onefetch](https://github.com/o2sh/onefetch): Git repository summary in your terminal
 - [ouch](https://github.com/ouch-org/ouch): Compression and decompression tool
 - [rusty-rain](https://github.com/cowboy8625/rusty-rain): Terminal-based digital rain effect
-- [starship](https://starship.rs): Cross-shell prompt
 - [taplo-cli](https://github.com/tamasfe/taplo): TOML toolkit
 - [tokei](https://github.com/XAMPPRocky/tokei): Code statistics tool
 - [yazi-cli](https://github.com/sxyazi/yazi): Command-line interface for Yazi
-- [zeitfetch](https://github.com/sidagr549/zeitfetch): System information tool
-- [zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
+- [zeitfetch](https://github.com/nidnogg/zeitfetch): System information tool
 
 ## Usage
 
 1. Open WezTerm.
 2. Yazelix will automatically start, providing an integrated environment with Zellij, Yazi, and Helix.
 3. Use Zellij for terminal multiplexing, Yazi for file management, and Helix for text editing.
-4. If you chose the expanded installation, utilize the additional utilities as needed in your workflow.
+4. Zoxide enhances your directory navigation, while Starship provides a customized prompt.
+5. If you chose the expanded installation, utilize the additional utilities as needed in your workflow.
 
 For more information on using Yazelix, refer to the [Yazelix README](https://github.com/luccahuguet/yazelix).
 
 ## Contributing
 
-Feel free to open issues or submit pull requests to improve Rustifier. While the aim for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
+Feel free to open issues or submit pull requests to improve Rustifier. While the aim is for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
 
 ## License
 
 This project is licensed under the MIT License.
+
+## Disclaimer
+
+This project is experimental and has been tested primarily on a specific machine. Users should exercise caution when installing and use at their own risk. It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
