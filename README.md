@@ -1,6 +1,14 @@
 # Rustifier
 
-Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based utilities.
+Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities. It uses justfiles to install the programs.
+
+# todo
+
+- [ ] fix helix install
+- [ ] check links
+- [ ] update yazelix readme
+- [ ] create yazelix video
+- [ ] say it's experimental, barely tested, only on my machine and should be used carefully
 
 ## Compatibility
 
@@ -40,11 +48,7 @@ The project uses a modular structure with separate justfiles for different compo
 
 ## WezTerm Configuration
 
-WezTerm configuration is handled by a separate repository:
-
-- [wez-files](https://github.com/yourusername/wez-files): Contains WezTerm configuration files
-
-The installation process will clone this repository and set up WezTerm to use these configuration files.
+WezTerm configuration lies in a separate repository: [wez-files](https://github.com/yourusername/wez-files), but the installation process will clone this repository and set up WezTerm to use these configuration files for you.
 
 ## What's Included
 
@@ -57,27 +61,24 @@ The installation process will clone this repository and set up WezTerm to use th
 
 ### Optional Utilities (Expanded Installation)
 If you choose the expanded installation, the following will also be installed:
-- aichat
-- bottom
-- cargo-update
-- erdtree
-- gitui
-- helix-term
-- markdown-oxide
-- mise
-- onefetch
-- ouch
-- rusty-rain
-- starship
-- taplo-cli
-- tokei
-- yazi-cli
-- zeitfetch
-- zoxide
 
-## Post-Installation
-
-After installation, your Yazelix environment is ready to use. Simply open WezTerm, and it will automatically start Nushell and launch Yazelix with the correct configuration.
+- [aichat](https://github.com/sigoden/aichat): AI-powered chat tool
+- [bottom](https://github.com/ClementTsang/bottom): System monitor and process viewer
+- [cargo-update](https://github.com/nabijaczleweli/cargo-update): Cargo subcommand for checking and applying updates
+- [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
+- [gitui](https://github.com/extrawurst/gitui): Terminal UI for git
+- [helix-term](https://github.com/helix-editor/helix): Terminal version of Helix editor
+- [markdown-oxide](https://github.com/dlaing/markdown-oxide): Markdown parser and renderer
+- [mise](https://github.com/jdx/mise): Development tool version manager
+- [onefetch](https://github.com/o2sh/onefetch): Git repository summary in your terminal
+- [ouch](https://github.com/ouch-org/ouch): Compression and decompression tool
+- [rusty-rain](https://github.com/cowboy8625/rusty-rain): Terminal-based digital rain effect
+- [starship](https://starship.rs): Cross-shell prompt
+- [taplo-cli](https://github.com/tamasfe/taplo): TOML toolkit
+- [tokei](https://github.com/XAMPPRocky/tokei): Code statistics tool
+- [yazi-cli](https://github.com/sxyazi/yazi): Command-line interface for Yazi
+- [zeitfetch](https://github.com/sidagr549/zeitfetch): System information tool
+- [zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
 
 ## Usage
 
@@ -90,7 +91,7 @@ For more information on using Yazelix, refer to the [Yazelix README](https://git
 
 ## Contributing
 
-Feel free to open issues or submit pull requests to improve Rustifier. While we aim for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
+Feel free to open issues or submit pull requests to improve Rustifier. While the aim for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
 
 ## License
 
