@@ -6,7 +6,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 - [x] Install just with cargo
 - [x] Check and fix links
-- [ ] Fix Helix installation
+- [x] Fix Helix installation
+- [x] Move Helix installation to a separate file
 - [ ] Update Yazelix README
 - [ ] Create Yazelix video
 
@@ -19,6 +20,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 - A Linux distribution (Debian-based recommended for full compatibility)
 - Bash shell
+- Git
+- A C++14 compatible compiler (GCC or Clang) for building Helix
 
 Note: Rust and Just will be automatically installed if not already present on your system.
 
@@ -44,11 +47,15 @@ The project uses a modular structure with separate justfiles for different compo
 - `setup.sh`: The main setup script that ensures Rust and Just are installed
 - `main.just`: The main justfile that orchestrates the installation process
 - `src/install_rust.just`: Handles Rust installation
+- `src/install_wez.just`: Installs WezTerm
 - `src/config_wez.just`: Configures WezTerm
+- `src/install_helix.just`: Handles Helix installation
 - `src/basic.just`: Installs core components
 - `src/expanded.just`: Installs core components and additional utilities
 
-## WezTerm Configuration
+## WezTerm Installation and Configuration
+
+WezTerm will be automatically installed on Debian-based systems. For other systems, you may need to install it manually following the instructions provided during the setup process.
 
 WezTerm configuration lies in a separate repository: [wez-files](https://github.com/yourusername/wez-files), but the installation process will clone this repository and set up WezTerm to use these configuration files for you.
 
@@ -71,7 +78,6 @@ If you choose the expanded installation, the following will also be installed:
 - [cargo-update](https://github.com/nabijaczleweli/cargo-update): Cargo subcommand for checking and applying updates
 - [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
 - [gitui](https://github.com/extrawurst/gitui): Terminal UI for git
-- [helix-term](https://github.com/helix-editor/helix): Terminal version of Helix editor
 - [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide): Markdown parser and renderer
 - [mise](https://github.com/jdx/mise): Development tool version manager
 - [onefetch](https://github.com/o2sh/onefetch): Git repository summary in your terminal
@@ -102,4 +108,4 @@ This project is licensed under the MIT License.
 
 ## Disclaimer
 
-This project is experimental and has been tested primarily on a specific machine. Users should exercise caution when installing and use at their own risk. It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
+This project is experimental and has been tested primarily on a specific machine, a Lenovo Ideapad 320 running COSMIC 24.04 PopOS. Users should exercise caution when installing and use at their own risk. It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.

@@ -2,6 +2,7 @@
 import "src/install_rust.just"
 import "src/install_wez.just"
 import "src/config_wez.just"
+import "src/install_helix.just"
 import "src/basic.just"
 import "src/expanded.just"
 

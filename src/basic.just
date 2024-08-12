@@ -1,6 +1,8 @@
+import "../src/install_helix.just"
+
 install-basic-programs:
     #!/usr/bin/env bash
-    programs=("zellij" "nushell" "helix" "yazi-fm" "zoxide" "starship")
+    programs=("zellij" "nushell" "yazi-fm" "zoxide" "starship")
     for program in "${programs[@]}"; do
         echo "Installing $program..."
         cargo install "$program"
@@ -8,3 +10,4 @@ install-basic-programs:
 
 default:
     @just install-basic-programs
+    @just install_helix::install-helix
