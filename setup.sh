@@ -5,6 +5,11 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+# Remind user to install WezTerm
+echo "Please ensure you have manually installed WezTerm before proceeding."
+echo "Visit https://wezfurlong.org/wezterm/install/linux.html for installation instructions."
+read -p "Press Enter to continue once WezTerm is installed, or Ctrl+C to exit and install WezTerm first."
+
 # Check if Rust is installed
 if ! command_exists rustc; then
   echo "Rust is not installed. Installing Rust..."
