@@ -17,6 +17,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 - Should be compatible with various Linux distributions
 - List versions of the programs used (zellij, yazi etc)
+- This project is experimental and users should exercise caution when installing and use at their own risk. 
+- It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
 
 ## Prerequisites
 
@@ -34,18 +36,36 @@ Note: Rust and Just will be automatically installed if not already present on yo
    - Visit https://wezfurlong.org/wezterm/install/linux.html
    - Ensure WezTerm is properly installed before proceeding
 
-2. Clone this repository:
+2. Create or open your `~/.wezterm.lua` file:
+3. Add the following content to your `~/.wezterm.lua` file:
+   ```lua
+   -- Pull in the wezterm API
+   local wezterm = require 'wezterm'
+   -- This will hold the configuration.
+   local config = wezterm.config_builder()
+   -- This is where you actually apply your config choices
+   -- For example, changing the color scheme:
+   config.color_scheme = 'Abernathy'
+   -- Spawn a nushell shell in login mode
+   config.default_prog = { 'nu', '-c', "zellij -l welcome --config-dir ~/.config/yazelix/zellij options --layout-dir ~/.config/yazelix/zellij/layouts" }
+   -- Others
+   config.hide_tab_bar_if_only_one_tab = true
+   config.window_decorations = "NONE"
+   -- and finally, return the configuration to wezterm
+   return config
+   ```
+
+- Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
+4. Clone this repository:
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
-
-3. Run the installation script:
+5. Run the installation script:
    ```
    ./setup.sh
    ```
-
-4. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
+6. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
 
 ## Project Structure
 
@@ -54,14 +74,9 @@ The project uses a modular structure with separate justfiles for different compo
 - `setup.sh`: The main setup script that ensures Rust and Just are installed
 - `main.just`: The main justfile that orchestrates the installation process
 - `src/install_rust.just`: Handles Rust installation
-- `src/config_wez.just`: Configures WezTerm
 - `src/install_helix.just`: Handles Helix installation
 - `src/basic.just`: Installs core components
 - `src/expanded.just`: Installs core components and additional utilities
-
-## WezTerm Configuration
-
-The installation process will clone [wez-files](https://github.com/luccahuguet/wez-files) and set up WezTerm to use these configuration files for you.
 
 ## What's Included
 
@@ -106,10 +121,3 @@ For more information on using Yazelix, refer to the [Yazelix README](https://git
 
 Feel free to open issues or submit pull requests to improve Rustifier. While the aim is for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
 
-## License
-
-This project is licensed under the MIT License.
-
-## Disclaimer
-
-This project is experimental and has been tested on various Linux distributions. Users should exercise caution when installing and use at their own risk. It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
