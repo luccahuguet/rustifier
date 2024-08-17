@@ -1,6 +1,5 @@
 # Import other justfiles
 import "src/install_rust.just"
-import "src/config_wez.just"
 import "src/install_helix.just"
 import "src/basic.just"
 import "src/expanded.just"
@@ -21,11 +20,11 @@ choose:
     fi
 
 # Run basic installation
-install-basic: install-rust configure-wezterm
+install-basic: install-rust
     @just basic::default
 
 # Run expanded installation
-install-expanded: install-rust configure-wezterm
+install-expanded: install-rust
     @just expanded::default
 
 # Clone Yazelix configuration
