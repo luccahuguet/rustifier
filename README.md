@@ -15,6 +15,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ## Compatibility
 
 - Tested with:
+
 | Component | Version                  |
 | --------- | ------------------------ |
 | OS        | Pop!_OS 22.04            |
@@ -92,19 +93,19 @@ The project uses a modular structure with separate justfiles for different compo
 - `src/basic.just`: Installs core components
 - `src/expanded.just`: Installs core components and additional utilities
 
-## What's Included
+## The programs
 
-### Core Components (Always Installed)
+### Required 
+- [WezTerm](https://wezfurlong.org/wezterm/): Terminal emulator
+- [Helix](https://helix-editor.com): Text editor
+
+### Core Components (Basic installation)
 - [Zellij](https://github.com/zellij-org/zellij): Terminal workspace
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
 - [Yazelix](https://github.com/luccahuguet/yazelix) Integrating Helix, Yazi and zellij
 - [Nushell](https://www.nushell.sh/): Modern amazing shell written in rust, best fit to yazelix
 - [Starship](https://starship.rs): Cross-shell prompt
 - [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
-
-### Required Manual Installations
-- [WezTerm](https://wezfurlong.org/wezterm/): Terminal emulator
-- [Helix](https://helix-editor.com): Text editor
 
 ### Optional Utilities (Expanded Installation)
 If you choose the expanded installation, the following will also be installed:
