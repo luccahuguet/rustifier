@@ -1,6 +1,6 @@
 # Rustifier
 
-Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
+Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Yazi, Zellij, Helix (the yazelix trinity) running on WezTerm, running Nushell (although nushell is optional). It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
 
 ## Todo List
 
@@ -9,14 +9,24 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [x] Fix Helix installation
 - [x] Move Helix installation to a separate file
 - [x] Update WezTerm installation process
-- [ ] beam up wezterm files to a repo
 - [ ] Update Yazelix README
 - [ ] Create Yazelix video
 
 ## Compatibility
 
+- Tested with:
+| Component | Version                  |
+| --------- | ------------------------ |
+| OS        | Pop!_OS 22.04            |
+| DE        | COSMIC                   |
+| Zellij    | 0.40.1                   |
+| Helix     | helix 24.7 (09297046)    |
+| Nushell   | 0.96.1                   |
+| Zoxide    | 0.9.4                    |
+| Yazi      | 0.2.5                    |
+| WezTerm   | 20240203-110809-5046fc22 |
+
 - Should be compatible with various Linux distributions
-- List versions of the programs used (zellij, yazi etc)
 - This project is experimental and users should exercise caution when installing and use at their own risk. 
 - It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
 
@@ -25,8 +35,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - A Linux distribution
 - Bash shell
 - Git
-- A C++14 compatible compiler (GCC or Clang) for building Helix
 - WezTerm (to be installed manually)
+- Helix (to be installed manually)
 
 Note: Rust and Just will be automatically installed if not already present on your system.
 
@@ -36,8 +46,13 @@ Note: Rust and Just will be automatically installed if not already present on yo
    - Visit https://wezfurlong.org/wezterm/install/linux.html
    - Ensure WezTerm is properly installed before proceeding
 
-2. Create or open your `~/.wezterm.lua` file:
-3. Add the following content to your `~/.wezterm.lua` file:
+2. Install Helix:
+   - Visit https://docs.helix-editor.com/install.html
+   - Follow the installation instructions for your system
+   - Ensure Helix is properly installed before proceeding
+
+3. Create or open your `~/.wezterm.lua` file:
+4. Add the following content to your `~/.wezterm.lua` file:
    ```lua
    -- Pull in the wezterm API
    local wezterm = require 'wezterm'
@@ -56,16 +71,16 @@ Note: Rust and Just will be automatically installed if not already present on yo
    ```
 
 - Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
-4. Clone this repository:
+5. Clone this repository:
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
-5. Run the installation script:
+6. Run the installation script:
    ```
    ./setup.sh
    ```
-6. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
+7. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
 
 ## Project Structure
 
@@ -74,7 +89,6 @@ The project uses a modular structure with separate justfiles for different compo
 - `setup.sh`: The main setup script that ensures Rust and Just are installed
 - `main.just`: The main justfile that orchestrates the installation process
 - `src/install_rust.just`: Handles Rust installation
-- `src/install_helix.just`: Handles Helix installation
 - `src/basic.just`: Installs core components
 - `src/expanded.just`: Installs core components and additional utilities
 
@@ -83,11 +97,14 @@ The project uses a modular structure with separate justfiles for different compo
 ### Core Components (Always Installed)
 - [Zellij](https://github.com/zellij-org/zellij): Terminal workspace
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
-- [Helix](https://helix-editor.com): Text editor
 - [Yazelix](https://github.com/luccahuguet/yazelix) Integrating Helix, Yazi and zellij
 - [Nushell](https://www.nushell.sh/): Modern amazing shell written in rust, best fit to yazelix
 - [Starship](https://starship.rs): Cross-shell prompt
 - [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
+
+### Required Manual Installations
+- [WezTerm](https://wezfurlong.org/wezterm/): Terminal emulator
+- [Helix](https://helix-editor.com): Text editor
 
 ### Optional Utilities (Expanded Installation)
 If you choose the expanded installation, the following will also be installed:
@@ -120,4 +137,3 @@ For more information on using Yazelix, refer to the [Yazelix README](https://git
 ## Contributing
 
 Feel free to open issues or submit pull requests to improve Rustifier. While the aim is for a quick, ready-to-use setup, we're open to suggestions that enhance functionality without compromising ease of use.
-

@@ -1,6 +1,5 @@
 # Import other justfiles
 import "src/install_rust.just"
-import "src/install_helix.just"
 import "src/basic.just"
 import "src/expanded.just"
 
