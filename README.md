@@ -1,6 +1,6 @@
 # Rustifier
 
-Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Yazi, Zellij, Helix (the yazelix trinity) running on WezTerm, running Nushell (although nushell is optional). It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
+Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
 
 ## Todo List
 
@@ -31,29 +31,19 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - This project is experimental and users should exercise caution when installing and use at their own risk. 
 - It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
 
-## Prerequisites
-
-- A Linux distribution
-- Bash shell
-- Git
-- WezTerm (to be installed manually)
-- Helix (to be installed manually)
-
-Note: Rust and Just will be automatically installed if not already present on your system.
-
 ## Installation
 
-1. Install WezTerm:
-   - Visit https://wezfurlong.org/wezterm/install/linux.html
-   - Ensure WezTerm is properly installed before proceeding
+1. Install Rust (if not already installed):
+   - Visit https://www.rust-lang.org/tools/install and follow the instructions
+   - After installation, run `source $HOME/.cargo/env` or restart your terminal
 
-2. Install Helix:
-   - Visit https://docs.helix-editor.com/install.html
-   - Follow the installation instructions for your system
-   - Ensure Helix is properly installed before proceeding
+2. Install WezTerm:
+   - Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
 
-3. Create or open your `~/.wezterm.lua` file:
-4. Add the following content to your `~/.wezterm.lua` file:
+3. Configure WezTerm:
+   - Create or open your `~/.wezterm.lua` file
+   - Add the following content:
+
    ```lua
    -- Pull in the wezterm API
    local wezterm = require 'wezterm'
@@ -71,35 +61,37 @@ Note: Rust and Just will be automatically installed if not already present on yo
    return config
    ```
 
-- Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
+   Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
+
+4. Install Helix:
+   - Visit https://docs.helix-editor.com/install.html and follow the instructions
+
 5. Clone this repository:
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
+
 6. Run the installation script:
    ```
    ./setup.sh
    ```
+   This script will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
+
 7. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
 
 ## Project Structure
 
 The project uses a modular structure with separate justfiles for different components:
 
-- `setup.sh`: The main setup script that ensures Rust and Just are installed
+- `setup.sh`: The main setup script that checks prerequisites and runs the installation
 - `main.just`: The main justfile that orchestrates the installation process
-- `src/install_rust.just`: Handles Rust installation
 - `src/basic.just`: Installs core components
 - `src/expanded.just`: Installs core components and additional utilities
 
-## The programs
+## What's Included
 
-### Required 
-- [WezTerm](https://wezfurlong.org/wezterm/): Terminal emulator
-- [Helix](https://helix-editor.com): Text editor
-
-### Core Components (Basic installation)
+### Core Components (Always Installed)
 - [Zellij](https://github.com/zellij-org/zellij): Terminal workspace
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
 - [Yazelix](https://github.com/luccahuguet/yazelix) Integrating Helix, Yazi and zellij

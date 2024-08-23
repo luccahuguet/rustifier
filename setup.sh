@@ -5,17 +5,47 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-# Remind user to install WezTerm
-echo "Please ensure you have manually installed WezTerm before proceeding."
-echo "Visit https://wezfurlong.org/wezterm/install/linux.html for installation instructions."
-read -p "Press Enter to continue once WezTerm is installed, or Ctrl+C to exit and install WezTerm first."
+# Check Rust installation
+check_rust() {
+  if ! command_exists rustc; then
+    echo "Rust is not installed. Please install Rust before proceeding."
+    echo "Visit https://www.rust-lang.org/tools/install for installation instructions."
+    echo "After installing Rust, run 'source $HOME/.cargo/env' or restart your terminal."
+    exit 1
+  else
+    echo "Rust is installed."
+  fi
+}
 
-# Check if Rust is installed
-if ! command_exists rustc; then
-  echo "Rust is not installed. Installing Rust..."
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  source "$HOME/.cargo/env"
-fi
+# Check WezTerm installation
+check_wezterm() {
+  if ! command_exists wezterm; then
+    echo "WezTerm is not installed. Please install WezTerm before proceeding."
+    echo "Visit https://wezfurlong.org/wezterm/install/linux.html for installation instructions."
+    exit 1
+  else
+    echo "WezTerm is installed."
+  fi
+}
+
+# Check Helix installation
+check_helix() {
+  if ! command_exists hx; then
+    echo "Helix is not installed. Please install Helix before proceeding."
+    echo "Visit https://docs.helix-editor.com/install.html for installation instructions."
+    exit 1
+  else
+    echo "Helix is installed."
+  fi
+}
+
+# Main script
+echo "Checking prerequisites..."
+check_rust
+check_wezterm
+check_helix
+
+echo "All prerequisites are installed. Proceeding with setup..."
 
 # Check if just is installed
 if ! command_exists just; then
