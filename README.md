@@ -39,9 +39,11 @@ Tested with:
    ```
    After installation, run `source $HOME/.cargo/env` or restart your terminal
 
-2. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+2. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
 
-3. Configure WezTerm
+3. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+
+4. Configure WezTerm
    a. Create or open your `~/.wezterm.lua` file  
    b. Add the following content  
 
@@ -64,7 +66,6 @@ Tested with:
 
    Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
 
-4. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
 
 5. Clone this repository
    ```
