@@ -76,7 +76,7 @@ Tested with:
 
 6. Run the installation script
    ```
-   chmod -x ./setup.sh
+   chmod +x ./setup.sh
    ./setup.sh
    ```
    This script will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
