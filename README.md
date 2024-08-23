@@ -41,9 +41,9 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 2. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
 
-3. Configure WezTerm:
-   a. Create or open your `~/.wezterm.lua` file
-   b. Add the following content:
+3. Configure WezTerm:  
+   a. Create or open your `~/.wezterm.lua` file  
+   b. Add the following content:  
 
    ```lua
    -- Pull in the wezterm API
