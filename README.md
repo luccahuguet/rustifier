@@ -41,9 +41,9 @@ Tested with:
 
 2. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
 
-3. Configure WezTerm:  
+3. Configure WezTerm
    a. Create or open your `~/.wezterm.lua` file  
-   b. Add the following content:  
+   b. Add the following content  
 
    ```lua
    -- Pull in the wezterm API
@@ -66,13 +66,13 @@ Tested with:
 
 4. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
 
-5. Clone this repository:
+5. Clone this repository
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
 
-6. Run the installation script:
+6. Run the installation script
    ```
    ./setup.sh
    ```
