@@ -64,8 +64,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
    Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
 
-4. Install Helix:
-   - Visit https://docs.helix-editor.com/install.html and follow the instructions
+4. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
 
 5. Clone this repository:
    ```
