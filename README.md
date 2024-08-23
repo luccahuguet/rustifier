@@ -43,7 +43,7 @@ Tested with:
 
 3. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
 
-4. Configure WezTerm
+4. Configure WezTerm  
    a. Create or open your `~/.wezterm.lua` file  
    b. Add the following content  
 
