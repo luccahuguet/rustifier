@@ -34,7 +34,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ## Installation
 
 1. Install Rust (if not already installed):
-   - Visit https://www.rust-lang.org/tools/install or  
+- Visit https://www.rust-lang.org/tools/install or  
    ```
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
