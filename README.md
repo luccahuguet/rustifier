@@ -14,7 +14,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 ## Compatibility
 
-- Tested with:
+Tested with:
 
 | Component | Version                  |
 | --------- | ------------------------ |
