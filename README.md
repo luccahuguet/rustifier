@@ -13,7 +13,10 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [ ] Create Yazelix video
 
 ## Compatibility
-
+- Should be compatible with various Linux distributions
+- This project is experimental and users should exercise caution when installing and use at their own risk. 
+- It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
+  
 Tested with:
 
 | Component | Version                  |
@@ -27,9 +30,7 @@ Tested with:
 | Yazi      | 0.2.5                    |
 | WezTerm   | 20240203-110809-5046fc22 |
 
-- Should be compatible with various Linux distributions
-- This project is experimental and users should exercise caution when installing and use at their own risk. 
-- It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
+
 
 ## Installation
 
