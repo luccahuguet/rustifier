@@ -40,9 +40,9 @@ Tested with:
    ```
    After installation, run `source $HOME/.cargo/env` or restart your terminal
 
-2. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
+2. Install [Helix](https://docs.helix-editor.com/install.html)
 
-3. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+3. Install [WezTerm](https://wezfurlong.org/wezterm/install/linux.html)
 
 4. Configure WezTerm  
    a. Create or open your `~/.wezterm.lua` file  
