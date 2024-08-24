@@ -9,8 +9,15 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [x] Fix Helix installation
 - [x] Move Helix installation to a separate file
 - [x] Update WezTerm installation process
+- [x] Note Nushell dependencies in the instructions
+- [ ] Use cargo-install-update to install some binaries directly
+- [ ] Create issue to evaluate using nix for some stuff
 - [ ] Update Yazelix README
 - [ ] Create Yazelix video
+- [ ] Create a separate place for apt things like wl-clipboard
+- [x] Incorporate the step of cloning the yazelix repo in a proper place of the justfile
+- [ ] ask before cloning yazelix
+- [ ] Add instructions on how to document zoxide
 
 ## Compatibility
 - Should be compatible with various Linux distributions
@@ -30,8 +37,6 @@ Tested with:
 | Yazi      | 0.2.5                    |
 | WezTerm   | 20240203-110809-5046fc22 |
 
-
-
 ## Installation
 
 1. Install Rust (if not already installed). Visit https://www.rust-lang.org/tools/install or  
@@ -40,11 +45,22 @@ Tested with:
    ```
    After installation, run `source $HOME/.cargo/env` or restart your terminal
 
-2. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
+2. Install system dependencies:
+   - For Ubuntu/Debian-based systems:
+     ```
+     sudo apt install libssl-dev
+     ```
+   - For Fedora:
+     ```
+     sudo dnf install openssl-devel
+     ```
+   Note: These are required for Nushell installation.
 
-3. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+3. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
 
-4. Configure WezTerm  
+4. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+
+5. Configure WezTerm  
    a. Create or open your `~/.wezterm.lua` file  
    b. Add the following content  
 
@@ -67,21 +83,20 @@ Tested with:
 
    Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
 
-
-5. Clone this repository
+6. Clone this repository
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
 
-6. Run the installation script
+7. Run the installation script
    ```
    chmod +x ./setup.sh
    ./setup.sh
    ```
    This script will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
 
-7. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
+8. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
 
 ## Project Structure
 
@@ -99,7 +114,6 @@ The project uses a modular structure with separate justfiles for different compo
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
 - [Yazelix](https://github.com/luccahuguet/yazelix) Integrating Helix, Yazi and zellij
 - [Nushell](https://www.nushell.sh/): Modern amazing shell written in rust, best fit to yazelix
-- [Starship](https://starship.rs): Cross-shell prompt
 - [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
 
 ### Optional Utilities (Expanded Installation)

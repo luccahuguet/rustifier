@@ -49,9 +49,23 @@ echo "All prerequisites are installed. Proceeding with setup..."
 
 # Check if just is installed
 if ! command_exists just; then
-  echo "just is not installed. Installing just..."
-  cargo install just
+  echo "just is not installed."
+  read -p "Do you want to install just? (y/n): " confirm
+  if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+    echo "Installing just..."
+    cargo install just
+  else
+    echo "just is required for the installation process. Exiting."
+    exit 1
+  fi
 fi
 
-# Now that we're sure just is installed, we can use it
-just choose
+echo "First part of the installation is complete."
+echo "The following components have been checked or installed:"
+echo "- Rust"
+echo "- WezTerm"
+echo "- Helix"
+echo "- just"
+
+echo "To continue with the installation, please run:"
+echo "just choose"
