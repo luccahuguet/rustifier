@@ -56,9 +56,9 @@ Tested with:
      ```
    Note: These are required for Nushell installation.
 
-3. Install Helix. Visit https://docs.helix-editor.com/install.html and follow the instructions
+3. Install [Helix](https://docs.helix-editor.com/install.html)
 
-4. Install WezTerm. Visit https://wezfurlong.org/wezterm/install/linux.html and follow the instructions
+4. Install [WezTerm](https://wezfurlong.org/wezterm/install/linux.html)
 
 5. Configure WezTerm  
    a. Create or open your `~/.wezterm.lua` file  
