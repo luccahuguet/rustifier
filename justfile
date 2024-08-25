@@ -18,22 +18,27 @@ choose:
     echo "   - Gitui: Terminal UI for git"
     echo "   - Mise: Development tool version manager"
     echo ""
-    echo "3: Expanded Installation"
-    echo "   This option includes all Full Install components, plus additional utilities."
+    echo "3: All Optional Utilities"
+    echo "   This option includes all Full Install components, plus all additional utilities."
+    echo ""
+    echo "4: Custom Optional Install"
+    echo "   This option includes all Full Install components, plus your choice of additional utilities."
     echo ""
     echo "Note: All installation types will clone the Yazelix configuration"
     echo "into ~/.config/yazelix. This provides the necessary configuration"
     echo "files for integrating Zellij, Yazi, and Helix."
     echo ""
-    read -p "Enter your choice (1, 2, or 3): " choice
+    read -p "Enter your choice (1, 2, 3, or 4): " choice
     if [ "$choice" = "1" ]; then
         just install-minimal
     elif [ "$choice" = "2" ]; then
         just install-full
     elif [ "$choice" = "3" ]; then
-        just install-expanded
+        just install-all-optional
+    elif [ "$choice" = "4" ]; then
+        just install-custom
     else
-        echo "Invalid choice. Please run 'just choose' again and select 1, 2, or 3."
+        echo "Invalid choice. Please run 'just choose' again and select 1, 2, 3, or 4."
     fi
 
 # Run minimal installation
@@ -42,8 +47,25 @@ install-minimal: check-cargo-update install-minimal-programs clone-yazelix
 # Run full installation
 install-full: install-minimal install-full-programs
 
-# Run expanded installation
-install-expanded: install-full install-expanded-programs
+# Run all optional installation
+install-all-optional: install-full install-all-optional-programs
+
+# Run custom installation
+install-custom: install-full
+    #!/usr/bin/env bash
+    echo "Choose which optional programs to install:"
+    optional_programs=("aichat" "bottom" "erdtree" "markdown-oxide" "onefetch" "ouch" "rusty-rain" "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
+    selected_programs=()
+    for program in "${optional_programs[@]}"; do
+        read -p "Install $program? (y/n): " choice
+        if [[ $choice == [yY] || $choice == [yY][eE][sS] ]]; then
+            selected_programs+=("$program")
+        fi
+    done
+    for program in "${selected_programs[@]}"; do
+        echo "Installing/updating $program..."
+        CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
+    done
 
 # Check and install cargo-update if necessary
 check-cargo-update:
@@ -82,12 +104,11 @@ install-full-programs:
         CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
     done
 
-# Install expanded programs
-install-expanded-programs:
+# Install all optional programs
+install-all-optional-programs:
     #!/usr/bin/env bash
-    echo "Installing additional programs for expanded setup..."
-    programs=("aichat" "bottom" "erdtree" "markdown-oxide" "onefetch" "ouch" \
-        "rusty-rain" "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
+    echo "Installing all optional programs..."
+    programs=("aichat" "bottom" "erdtree" "markdown-oxide" "onefetch" "ouch" "rusty-rain" "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
     for program in "${programs[@]}"; do
         echo "Installing/updating $program..."
         CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
