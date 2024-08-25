@@ -92,10 +92,23 @@ install-expanded-programs:
 
 # Clone Yazelix configuration
 clone-yazelix:
-    @echo "Cloning Yazelix configuration..."
-    @echo "This will create a new directory: ~/.config/yazelix"
-    @echo "It will contain the configuration files for Zellij, Yazi, and Helix integration."
-    @git clone https://github.com/luccahuguet/yazelix.git ~/.config/yazelix
+    #!/usr/bin/env bash
+    echo "Checking Yazelix configuration..."
+    if [ -d "$HOME/.config/yazelix" ]; then
+        echo "WARNING: The directory ~/.config/yazelix already exists."
+        echo "If you want to reinstall Yazelix configuration, please remove the directory"
+        echo "by running 'rm -rf ~/.config/yazelix' and then run this script again."
+    else
+        echo "Cloning Yazelix configuration..."
+        echo "This will create a new directory: ~/.config/yazelix"
+        echo "It will contain the configuration files for Zellij, Yazi, and Helix integration."
+        git clone https://github.com/luccahuguet/yazelix.git ~/.config/yazelix
+        if [ $? -eq 0 ]; then
+            echo "Yazelix configuration successfully cloned."
+        else
+            echo "Failed to clone Yazelix configuration. Please check your internet connection and try again."
+        fi
+    fi
 
 # Default recipe
 default:
