@@ -96,7 +96,7 @@ Tested with:
    ```
    This script will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
 
-8. Follow the prompts to complete the installation. You'll be asked to choose between a basic or expanded installation.
+8. Follow the prompts to complete the installation. You'll be asked to choose between three installation types.
 
 ## Project Structure
 
@@ -107,12 +107,18 @@ The project uses a modular structure with separate justfiles for different compo
 
 ## What's Included
 
-### Core Components (Always Installed)
+### Yazelix Minimal Install
 - [Zellij](https://github.com/zellij-org/zellij): Terminal workspace
 - [Yazi](https://github.com/sxyazi/yazi): Terminal file manager
-- [Yazelix](https://github.com/luccahuguet/yazelix) Integrating Helix, Yazi and zellij
+- [Yazelix](https://github.com/luccahuguet/yazelix): Integrating Helix, Yazi and zellij
 - [Nushell](https://www.nushell.sh/): Modern amazing shell written in rust, best fit to yazelix
-- [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
+- [Starship](https://starship.rs/): Customizable prompt for any shell
+
+### Yazelix Full Install
+* Includes all components from the Minimal Install, plus:
+* [Zoxide](https://github.com/ajeetdsouza/zoxide): Smarter cd command
+* [Gitui](https://github.com/extrawurst/gitui): Terminal UI for git
+* [Mise](https://github.com/jdx/mise): Development tool version manager
 
 ### Optional Utilities (Expanded Installation)
 If you choose the expanded installation, the following will also be installed:
@@ -120,9 +126,7 @@ If you choose the expanded installation, the following will also be installed:
 - [aichat](https://github.com/sigoden/aichat): AI-powered chat tool
 - [bottom](https://github.com/ClementTsang/bottom): System monitor and process viewer
 - [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
-- [gitui](https://github.com/extrawurst/gitui): Terminal UI for git
 - [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide): Markdown parser and renderer
-- [mise](https://github.com/jdx/mise): Development tool version manager
 - [onefetch](https://github.com/o2sh/onefetch): Git repository summary in your terminal
 - [ouch](https://github.com/ouch-org/ouch): Compression and decompression tool
 - [rusty-rain](https://github.com/cowboy8625/rusty-rain): Terminal-based digital rain effect
@@ -136,8 +140,8 @@ If you choose the expanded installation, the following will also be installed:
 1. Open WezTerm.
 2. Yazelix should automatically start, providing an integrated environment with Zellij, Yazi, and Helix.
 3. Use Zellij for terminal multiplexing, Yazi for file management, and Helix for text editing.
-4. Zoxide enhances your directory navigation, while Starship provides a customized prompt.
-5. If you chose the expanded installation, utilize the additional utilities as needed in your workflow.
+4. Nushell provides a modern shell experience, while Starship offers a customized prompt.
+5. If you chose the Full or Expanded installation, utilize the additional utilities as needed in your workflow.
 
 For more information on using Yazelix, refer to the [Yazelix README](https://github.com/luccahuguet/yazelix).
 

@@ -5,50 +5,45 @@ choose:
     echo "This script uses cargo-update, a cargo subcommand for checking and applying updates to installed executables."
     echo ""
     echo "Choose installation type:"
-    echo "1: Basic Installation (Yazelix)"
-    echo "   This option installs the core components of Yazelix, a project that integrates"
-    echo "   Zellij, Yazi, and Helix, using Yazi as Helix's sidebar. It includes:"
+    echo "1: Yazelix Minimal Install"
+    echo "   This option installs the core components of Yazelix:"
     echo "   - Zellij: Terminal workspace (multiplexer)"
     echo "   - Yazi: Terminal file manager"
-    echo "   - Nushell: Modern shell written in Rust, best fit for Yazelix, but not essential"
-    echo "   - Zoxide: Smarter cd command, greatly improves the experience"
-    echo "   - All written in rust of course!"
-    echo "   - note: helix won't be installed since it should be already installed"
+    echo "   - Nushell: Modern shell written in Rust"
+    echo "   - Starship: Customizable prompt for any shell"
     echo ""
-    echo "2: Expanded Installation"
-    echo "   This option includes all Basic Installation programs, plus:"
-    echo "   - aichat: AI-powered chat tool"
-    echo "   - bottom: System monitor and process viewer"
-    echo "   - erdtree: File-tree visualizer and disk usage analyzer"
-    echo "   - gitui: Terminal UI for git"
-    echo "   - markdown-oxide: Markdown parser and renderer"
-    echo "   - mise: Development tool version manager"
-    echo "   - onefetch: Git repository summary in your terminal"
-    echo "   - ouch: Compression and decompression tool"
-    echo "   - rusty-rain: Terminal-based digital rain effect"
-    echo "   - taplo-cli: TOML toolkit"
-    echo "   - tokei: Code statistics tool"
-    echo "   - yazi-cli: Command-line interface for Yazi"
-    echo "   - zeitfetch: System information tool"
+    echo "2: Yazelix Full Install"
+    echo "   This option includes all Minimal Install components, plus:"
+    echo "   - Zoxide: Smarter cd command"
+    echo "   - Gitui: Terminal UI for git"
+    echo "   - Mise: Development tool version manager"
     echo ""
-    echo "Note: Both installation types will clone the Yazelix configuration"
+    echo "3: Expanded Installation"
+    echo "   This option includes all Full Install components, plus additional utilities."
+    echo ""
+    echo "Note: All installation types will clone the Yazelix configuration"
     echo "into ~/.config/yazelix. This provides the necessary configuration"
     echo "files for integrating Zellij, Yazi, and Helix."
     echo ""
-    read -p "Enter your choice (1 or 2): " choice
+    read -p "Enter your choice (1, 2, or 3): " choice
     if [ "$choice" = "1" ]; then
-        just install-basic
+        just install-minimal
     elif [ "$choice" = "2" ]; then
+        just install-full
+    elif [ "$choice" = "3" ]; then
         just install-expanded
     else
-        echo "Invalid choice. Please run 'just choose' again and select 1 or 2."
+        echo "Invalid choice. Please run 'just choose' again and select 1, 2, or 3."
     fi
 
-# Run basic installation
-install-basic: check-cargo-update install-basic-programs clone-yazelix
+# Run minimal installation
+install-minimal: check-cargo-update install-minimal-programs clone-yazelix
+
+# Run full installation
+install-full: install-minimal install-full-programs
 
 # Run expanded installation
-install-expanded: check-cargo-update install-basic-programs install-expanded-programs clone-yazelix
+install-expanded: install-full install-expanded-programs
 
 # Check and install cargo-update if necessary
 check-cargo-update:
@@ -67,11 +62,21 @@ check-cargo-update:
         echo "cargo-update is already installed. Proceeding with installation..."
     fi
 
-# Install basic programs
-install-basic-programs:
+# Install minimal programs
+install-minimal-programs:
     #!/usr/bin/env bash
-    echo "Installing basic programs (Yazelix components)..."
-    programs=("zellij" "nu" "yazi-fm" "zoxide")
+    echo "Installing minimal Yazelix components..."
+    programs=("zellij" "nu" "yazi-fm" "starship")
+    for program in "${programs[@]}"; do
+        echo "Installing/updating $program..."
+        CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
+    done
+
+# Install full programs
+install-full-programs:
+    #!/usr/bin/env bash
+    echo "Installing additional programs for full setup..."
+    programs=("zoxide" "gitui" "mise")
     for program in "${programs[@]}"; do
         echo "Installing/updating $program..."
         CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
@@ -81,11 +86,10 @@ install-basic-programs:
 install-expanded-programs:
     #!/usr/bin/env bash
     echo "Installing additional programs for expanded setup..."
-    additional_programs=("aichat" "bottom" "erdtree" "gitui" \
-        "markdown-oxide" "mise" "onefetch" "ouch" "rusty-rain" \
-        "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
-    for program in "${additional_programs[@]}"; do
-        echo "Installing/updating additional program: $program..."
+    programs=("aichat" "bottom" "erdtree" "markdown-oxide" "onefetch" "ouch" \
+        "rusty-rain" "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
+    for program in "${programs[@]}"; do
+        echo "Installing/updating $program..."
         CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
     done
 
