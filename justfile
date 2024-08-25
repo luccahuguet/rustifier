@@ -45,28 +45,27 @@ choose:
     fi
 
 # Run basic installation
-install-basic: confirm-cargo-update install-cargo-update install-basic-programs clone-yazelix
+install-basic: check-cargo-update install-basic-programs clone-yazelix
 
 # Run expanded installation
-install-expanded: confirm-cargo-update install-cargo-update install-basic-programs install-expanded-programs clone-yazelix
+install-expanded: check-cargo-update install-basic-programs install-expanded-programs clone-yazelix
 
-# Confirm cargo-update installation
-confirm-cargo-update:
+# Check and install cargo-update if necessary
+check-cargo-update:
     #!/usr/bin/env bash
-    echo "WARNING: This script will install cargo-update, a tool for managing Rust package updates."
-    echo "cargo-update will be used to install and update other packages in this script."
-    echo "If you already have cargo-update installed, it will be updated to the latest version."
-    read -p "Do you want to proceed with installing/updating cargo-update? (y/n): " confirm
-    if [[ $confirm != [yY] && $confirm != [yY][eE][sS] ]]; then
-        echo "Installation cancelled."
-        exit 1
+    if ! command -v cargo-install-update &> /dev/null; then
+        echo "cargo-update is not installed."
+        read -p "Do you want to install cargo-update? (y/n): " confirm
+        if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+            echo "Installing cargo-update..."
+            cargo install --locked cargo-update
+        else
+            echo "cargo-update is required for the installation process. Exiting."
+            exit 1
+        fi
+    else
+        echo "cargo-update is already installed. Proceeding with installation..."
     fi
-
-# Install cargo-update
-install-cargo-update:
-    #!/usr/bin/env bash
-    echo "Installing/updating cargo-update..."
-    CARGO_INSTALL_OPTS=--locked cargo install cargo-update
 
 # Install basic programs
 install-basic-programs:
