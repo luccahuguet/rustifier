@@ -13,11 +13,12 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [ ] Update the testing table
 
 ## Compatibility
+- WARNING: The current version has not been tested yet
 - Should be compatible with various Linux distributions
 - This project is experimental and users should exercise caution when installing and use at their own risk. 
 - It's recommended to review the installation scripts and understand the changes that will be made to your system before proceeding.
   
-Tested with:
+(stale) A previous version of rustifier was tested with:
 
 | Component | Version                  |
 | --------- | ------------------------ |
