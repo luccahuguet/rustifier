@@ -66,7 +66,7 @@ confirm-cargo-update:
 install-cargo-update:
     #!/usr/bin/env bash
     echo "Installing/updating cargo-update..."
-    cargo install cargo-update
+    CARGO_INSTALL_OPTS=--locked cargo install cargo-update
 
 # Install basic programs
 install-basic-programs:
@@ -75,7 +75,7 @@ install-basic-programs:
     programs=("zellij" "nu" "yazi-fm" "zoxide")
     for program in "${programs[@]}"; do
         echo "Installing/updating $program..."
-        cargo install-update -i "$program"
+        CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
     done
 
 # Install expanded programs
@@ -87,7 +87,7 @@ install-expanded-programs:
         "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
     for program in "${additional_programs[@]}"; do
         echo "Installing/updating additional program: $program..."
-        cargo install-update -i "$program"
+        CARGO_INSTALL_OPTS=--locked cargo install-update -i "$program"
     done
 
 # Clone Yazelix configuration
