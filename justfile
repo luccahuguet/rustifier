@@ -1,5 +1,40 @@
+# Check prerequisites
+check-prerequisites:
+    #!/usr/bin/env bash
+    echo "Checking prerequisites..."
+    
+    # Check Rust installation
+    if ! command -v rustc >/dev/null 2>&1; then
+        echo "Rust is not installed. Please install Rust before proceeding."
+        echo "Visit https://www.rust-lang.org/tools/install for installation instructions."
+        echo "After installing Rust, run 'source $HOME/.cargo/env' or restart your terminal."
+        exit 1
+    else
+        echo "Rust is installed."
+    fi
+    
+    # Check WezTerm installation
+    if ! command -v wezterm >/dev/null 2>&1; then
+        echo "WezTerm is not installed. Please install WezTerm before proceeding."
+        echo "Visit https://wezfurlong.org/wezterm/install/linux.html for installation instructions."
+        exit 1
+    else
+        echo "WezTerm is installed."
+    fi
+    
+    # Check Helix installation
+    if ! command -v hx >/dev/null 2>&1; then
+        echo "Helix is not installed. Please install Helix before proceeding."
+        echo "Visit https://docs.helix-editor.com/install.html for installation instructions."
+        exit 1
+    else
+        echo "Helix is installed."
+    fi
+    
+    echo "All prerequisites are installed. Proceeding with setup..."
+
 # Choose installation type
-choose:
+choose: check-prerequisites
     #!/usr/bin/env bash
     echo "Welcome to Rustifier!"
     echo "This script uses cargo-update, a cargo subcommand for checking and applying updates to installed executables."

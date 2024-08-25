@@ -18,6 +18,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [x] Incorporate the step of cloning the yazelix repo in a proper place of the justfile
 - [x] Ask before cloning yazelix
 - [ ] Add instructions on how to document zoxide
+- [x] Remove setup.sh and use only justfile
 
 ## Compatibility
 - Should be compatible with various Linux distributions
@@ -83,26 +84,29 @@ Tested with:
 
    Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
 
-6. Clone this repository
+6. Install `just`:
+   ```
+   cargo install just
+   ```
+
+7. Clone this repository
    ```
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
 
-7. Run the installation script
+8. Run the installation script
    ```
-   chmod +x ./setup.sh
-   ./setup.sh
+   just
    ```
-   This script will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
+   This will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
 
-8. Follow the prompts to complete the installation. You'll be asked to choose between four installation types.
+9. Follow the prompts to complete the installation. You'll be asked to choose between four installation types.
 
 ## Project Structure
 
-The project uses a modular structure with separate justfiles for different components:
+The project uses a modular structure with a single justfile for managing the installation process:
 
-- `setup.sh`: The main setup script that checks prerequisites and runs the installation
 - `justfile`: The main justfile that orchestrates the installation process
 
 ## What's Included
@@ -144,7 +148,7 @@ Includes everything from the Full Install, plus pick which additional utilities 
 2. Yazelix should automatically start, providing an integrated environment with Zellij, Yazi, and Helix.
 3. Use Zellij for terminal multiplexing, Yazi for file management, and Helix for text editing.
 4. Nushell provides a modern shell experience, while Starship offers a customized prompt.
-5. If you chose the Full, All Optional, or Custom installation, utilize the additional utilities as needed in your workflow.
+5. If you chose the Full, All Optional, or Custom installation, utilize the additional utilities as needed in your workflow.. If you chose the Full, All Optional, or Custom installation, utilize the additional utilities as needed in your workflow.
 
 For more information on using Yazelix, refer to the [Yazelix README](https://github.com/luccahuguet/yazelix).
 
