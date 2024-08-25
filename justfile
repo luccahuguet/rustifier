@@ -2,7 +2,7 @@
 choose:
     #!/usr/bin/env bash
     echo "Welcome to Rustifier!"
-    echo "All programs will be installed via Cargo, Rust's package manager."
+    echo "This script uses cargo-update, a cargo subcommand for checking and applying updates to installed executables."
     echo ""
     echo "Choose installation type:"
     echo "1: Basic Installation (Yazelix)"
@@ -19,7 +19,6 @@ choose:
     echo "   This option includes all Basic Installation programs, plus:"
     echo "   - aichat: AI-powered chat tool"
     echo "   - bottom: System monitor and process viewer"
-    echo "   - cargo-update: Cargo subcommand for checking and applying updates"
     echo "   - erdtree: File-tree visualizer and disk usage analyzer"
     echo "   - gitui: Terminal UI for git"
     echo "   - markdown-oxide: Markdown parser and renderer"
@@ -46,10 +45,28 @@ choose:
     fi
 
 # Run basic installation
-install-basic: install-basic-programs clone-yazelix
+install-basic: confirm-cargo-update install-cargo-update install-basic-programs clone-yazelix
 
 # Run expanded installation
-install-expanded: install-basic-programs install-expanded-programs clone-yazelix
+install-expanded: confirm-cargo-update install-cargo-update install-basic-programs install-expanded-programs clone-yazelix
+
+# Confirm cargo-update installation
+confirm-cargo-update:
+    #!/usr/bin/env bash
+    echo "WARNING: This script will install cargo-update, a tool for managing Rust package updates."
+    echo "cargo-update will be used to install and update other packages in this script."
+    echo "If you already have cargo-update installed, it will be updated to the latest version."
+    read -p "Do you want to proceed with installing/updating cargo-update? (y/n): " confirm
+    if [[ $confirm != [yY] && $confirm != [yY][eE][sS] ]]; then
+        echo "Installation cancelled."
+        exit 1
+    fi
+
+# Install cargo-update
+install-cargo-update:
+    #!/usr/bin/env bash
+    echo "Installing/updating cargo-update..."
+    cargo install cargo-update
 
 # Install basic programs
 install-basic-programs:
@@ -57,20 +74,20 @@ install-basic-programs:
     echo "Installing basic programs (Yazelix components)..."
     programs=("zellij" "nu" "yazi-fm" "zoxide")
     for program in "${programs[@]}"; do
-        echo "Installing $program..."
-        cargo install "$program"
+        echo "Installing/updating $program..."
+        cargo install-update -i "$program"
     done
 
 # Install expanded programs
 install-expanded-programs:
     #!/usr/bin/env bash
     echo "Installing additional programs for expanded setup..."
-    additional_programs=("aichat" "bottom" "cargo-update" "erdtree" "gitui" \
+    additional_programs=("aichat" "bottom" "erdtree" "gitui" \
         "markdown-oxide" "mise" "onefetch" "ouch" "rusty-rain" \
         "taplo-cli" "tokei" "yazi-cli" "zeitfetch")
     for program in "${additional_programs[@]}"; do
-        echo "Installing additional program: $program..."
-        cargo install "$program"
+        echo "Installing/updating additional program: $program..."
+        cargo install-update -i "$program"
     done
 
 # Clone Yazelix configuration

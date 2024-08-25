@@ -67,5 +67,8 @@ echo "- WezTerm"
 echo "- Helix"
 echo "- just"
 
+echo "The installation will now use cargo-update to install and update packages."
+echo "You will be asked for confirmation before cargo-update is installed."
+
 echo "To continue with the installation, please run:"
 echo "just choose"

@@ -10,13 +10,13 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 - [x] Move Helix installation to a separate file
 - [x] Update WezTerm installation process
 - [x] Note Nushell dependencies in the instructions
-- [ ] Use cargo-install-update to install some binaries directly
+- [x] Use cargo-install-update to install some binaries directly
 - [ ] Create issue to evaluate using nix for some stuff
 - [ ] Update Yazelix README
 - [ ] Create Yazelix video
 - [ ] Create a separate place for apt things like wl-clipboard
 - [x] Incorporate the step of cloning the yazelix repo in a proper place of the justfile
-- [ ] ask before cloning yazelix
+- [x] Ask before cloning yazelix
 - [ ] Add instructions on how to document zoxide
 
 ## Compatibility
@@ -103,9 +103,7 @@ Tested with:
 The project uses a modular structure with separate justfiles for different components:
 
 - `setup.sh`: The main setup script that checks prerequisites and runs the installation
-- `main.just`: The main justfile that orchestrates the installation process
-- `src/basic.just`: Installs core components
-- `src/expanded.just`: Installs core components and additional utilities
+- `justfile`: The main justfile that orchestrates the installation process
 
 ## What's Included
 
@@ -121,7 +119,6 @@ If you choose the expanded installation, the following will also be installed:
 
 - [aichat](https://github.com/sigoden/aichat): AI-powered chat tool
 - [bottom](https://github.com/ClementTsang/bottom): System monitor and process viewer
-- [cargo-update](https://github.com/nabijaczleweli/cargo-update): Cargo subcommand for checking and applying updates
 - [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
 - [gitui](https://github.com/extrawurst/gitui): Terminal UI for git
 - [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide): Markdown parser and renderer
@@ -143,6 +140,13 @@ If you choose the expanded installation, the following will also be installed:
 5. If you chose the expanded installation, utilize the additional utilities as needed in your workflow.
 
 For more information on using Yazelix, refer to the [Yazelix README](https://github.com/luccahuguet/yazelix).
+
+## cargo-update instead of raw cargo
+
+Rustifier uses `cargo-update` for installing and updating packages. This approach provides some benefits:
+- It updates existing installations if a newer version is available.
+- It can sometimes install binaries directly, which can be faster than compiling from source.
+- It provides a more consistent way to manage installations and updates across all specified programs.
 
 ## Contributing
 
