@@ -3,9 +3,21 @@ check-prerequisites:
     let rust_installed = (which rustc | is-empty | not)
     let wezterm_installed = (which wezterm | is-empty | not)
     let helix_installed = (which hx | is-empty | not)
+    let nushell_installed = (which nu | is-empty | not)
+    let binstall_installed = (which cargo-binstall | is-empty | not)
 
     if not $rust_installed {
-        print $"Rust is not installed. Please install Rust before proceeding.\nVisit https://www.rust-lang.org/tools/install for installation instructions.\nAfter installing Rust, restart your terminal."
+        print $"Rust is not installed. Please run the setup script before proceeding."
+        exit 1
+    }
+
+    if not $nushell_installed {
+        print $"Nushell is not installed. Please run the setup script before proceeding."
+        exit 1
+    }
+
+    if not $binstall_installed {
+        print $"cargo-binstall is not installed. Please run the setup script before proceeding."
         exit 1
     }
 
@@ -25,14 +37,13 @@ check-prerequisites:
 choose: check-prerequisites
     print $"""
     Welcome to Rustifier!
-    This script uses cargo-update, a cargo subcommand for checking and applying updates to installed executables.
+    This script uses cargo-binstall, a tool for installing pre-compiled Rust binaries when available.
 
     Choose installation type:
     1: Yazelix Minimal Install
        This option installs the core components of Yazelix:
        - Zellij: Terminal workspace (multiplexer)
        - Yazi: Terminal file manager
-       - Nushell: Modern shell written in Rust
        - Starship: Customizable prompt for any shell
 
     2: Yazelix Full Install
@@ -66,7 +77,7 @@ choose: check-prerequisites
     }
 
 # Run minimal installation
-install-minimal: check-cargo-update install-minimal-programs clone-yazelix
+install-minimal: install-minimal-programs clone-yazelix
 
 # Run full installation
 install-full: install-minimal install-full-programs
@@ -84,32 +95,16 @@ install-custom: install-full
 
     $selected_programs | each { |program|
         print $"Installing/updating ($program)..."
-        CARGO_INSTALL_OPTS=--locked cargo install-update -i $program
-    }
-
-# Check and install cargo-update if necessary
-check-cargo-update:
-    if (which cargo-install-update | is-empty) {
-        print "cargo-update is not installed."
-        let confirm = (input "Do you want to install cargo-update? (y/n): ")
-        if $confirm == "y" or $confirm == "Y" {
-            print "Installing cargo-update..."
-            cargo install --locked cargo-update
-        } else {
-            print "cargo-update is required for the installation process. Exiting."
-            exit 1
-        }
-    } else {
-        print "cargo-update is already installed. Proceeding with installation..."
+        cargo binstall $program -y --locked
     }
 
 # Install minimal programs
 install-minimal-programs:
     print "Installing minimal Yazelix components..."
-    let programs = ["zellij" "nu" "yazi-fm" "starship"]
+    let programs = ["zellij" "yazi-fm" "starship"]
     $programs | each { |program|
         print $"Installing/updating ($program)..."
-        CARGO_INSTALL_OPTS=--locked cargo install-update -i $program
+        cargo binstall $program -y --locked
     }
 
 # Install full programs
@@ -118,7 +113,7 @@ install-full-programs:
     let programs = ["zoxide" "gitui" "mise"]
     $programs | each { |program|
         print $"Installing/updating ($program)..."
-        CARGO_INSTALL_OPTS=--locked cargo install-update -i $program
+        cargo binstall $program -y --locked
     }
 
 # Install all optional programs
@@ -127,7 +122,7 @@ install-all-optional-programs:
     let programs = ["aichat" "bottom" "erdtree" "markdown-oxide" "onefetch" "ouch" "rusty-rain" "taplo-cli" "tokei" "yazi-cli" "zeitfetch"]
     $programs | each { |program|
         print $"Installing/updating ($program)..."
-        CARGO_INSTALL_OPTS=--locked cargo install-update -i $program
+        cargo binstall $program -y --locked
     }
 
 # Clone Yazelix configuration

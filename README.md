@@ -4,20 +4,12 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 ## Todo List
 
-- [x] Install just with cargo
-- [x] Check and fix links
-- [x] Fix Helix installation
-- [x] Move Helix installation to a separate file
-- [x] Update WezTerm installation process
-- [x] Note Nushell dependencies in the instructions
-- [x] Use cargo-install-update to install some binaries directly
 - [ ] Update Yazelix README
 - [ ] Create Yazelix video
-- [x] Incorporate the step of cloning the yazelix repo in a proper place of the justfile
-- [x] Ask before cloning yazelix
 - [ ] Add instructions on how to set zoxide
 - [ ] Add instructions on how to set starship
-- [x] Remove setup.sh and use only justfile
+- [ ] evaluate moving system dependencies of nushell into the script
+- [ ] Update the testing table
 
 ## Compatibility
 - Should be compatible with various Linux distributions
