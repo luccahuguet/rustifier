@@ -1,4 +1,4 @@
-# Rustifier
+# Rustifier (WARNING: BARELY TESTED, MIGHT SHOW UNEXPECTED BEHAVIOR)
 
 Rustifier is a tool designed to quickly set up a complete Yazelix environment, integrating Zellij, Yazi, Helix, WezTerm, and Nushell. It offers an easy, opinionated setup with the option to include additional useful Rust-based terminal utilities.
 
