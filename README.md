@@ -5,7 +5,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ## Todo List
 
 - [x] Update Yazelix README
-- [ ] Create Yazelix video
+- [x] Create Yazelix video
 - [ ] Add instructions on how to set zoxide
 - [ ] Add instructions on how to set starship
 - [ ] maybe create a rustifier_programs folder in users $HOME?
