@@ -112,9 +112,10 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
    ```
    just
    ```
-   This will check for the required prerequisites (Rust, WezTerm, and Helix) before proceeding with the installation.
+   This will some show installation options on your screen, pick your poison :poison: and follow the steps! 
 
-8. Follow the prompts to complete the installation. You'll be asked to choose between four installation types.
+
+8. Now it seems everything is installed, right? Please reboot your machine for good measure
 
 ## What's Included
 
