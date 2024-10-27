@@ -34,32 +34,56 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ## Installation
 
 1. Clone this repository:
-   ```
+   ```bash
    git clone https://github.com/luccahuguet/rustifier.git
    cd rustifier
    ```
 
-2. Run the setup script:
-   ```
-   chmod +x setup.sh
-   ./setup.sh
-   ```
-   This script will check if Rust, Nushell, and Just are installed. If they're not, it will ask for your permission to install them. These tools are required for Rustifier to function properly.
+2. Setting up base programs
+
+   1. Run the setup script:
+      ```bash
+      chmod +x setup.sh
+      ./setup.sh
+      ```
+         This script will check if Rust, Nushell, and Just are installed. If they're not, it will ask for your permission to install them. These tools are required for Rustifier to function properly.
+
+   2. Restart your shell or run `exec $SHELL` (bash) or run `exec nu` (nushell)
 
 3. Install system dependencies:
    - For Ubuntu/Debian-based systems:
-     ```
+     ```bash
      sudo apt install libssl-dev
      ```
    - For Fedora:
-     ```
+     ```bash
      sudo dnf install openssl-devel
      ```
    Note: These may be required for Nushell installation if not already present.
 
 4. Install [Helix](https://docs.helix-editor.com/install.html)
+    - For instance if you want to build it from source:
+    ```bash
+    git clone https://github.com/helix-editor/helix ~/user_installs/helix
+    cd helix
+    ```
+    - And then:
+    ```bash
+    cargo install --path helix-term --locked
+    ```
+5. Install Wezterm. Clike [here](https://wezfurlong.org/wezterm/install/linux.html) to see many installation options... or for debian/ubuntu systems:
 
-5. Install [WezTerm](https://wezfurlong.org/wezterm/install/linux.html)
+      - Configure the apt repo
+      ```bash
+         curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+         echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+      ```
+
+      - And then
+      ```bash
+         sudo apt update
+         sudo apt install wezterm
+      ```
 
 6. Configure WezTerm:  
    a. Create or open your `~/.wezterm.lua` file  
