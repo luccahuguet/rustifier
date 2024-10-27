@@ -9,9 +9,9 @@ optional-packages := "erdtree onefetch rusty-rain taplo-cli tokei yazi-cli zeitf
 # Default recipe shows help
 default:
     @echo "\nAvailable installation options:"
-    @echo "  just install-min  - Minimal install ({{minimal-packages}})"
-    @echo "  just install-full - Full install (adds {{full-packages}})"
-    @echo "  just install-all  - Complete install (adds {{optional-packages}})\n"
+    @echo "  just install-minimal  - Installs ({{minimal-packages}})"
+    @echo "  just install-full - All packages from install-minimal plus {{full-packages}}"
+    @echo "  just install-extra  - All packages from install-full plus {{optional-packages}})\n"
 
 # Core installation function
 _install-packages packages:
@@ -46,18 +46,18 @@ clone-yazelix:
     }
 
 # Installation recipes
-install-min: 
+install-minimal: 
     @echo "\n📦 Starting minimal installation...\n"
     @just _install-packages "{{minimal-packages}}"
     @just clone-yazelix
     @echo "\n🎉 Minimal installation complete!\n"
 
-install-full: install-min
+install-full: install-minimal
     @echo "\n📦 Installing additional packages for full setup...\n"
     @just _install-packages "{{full-packages}}"
     @echo "\n🎉 Full installation complete!\n"
 
-install-all: install-full
+install-extra: install-full
     @echo "\n📦 Installing optional packages...\n"
     @just _install-packages "{{optional-packages}}"
-    @echo "\n🎉 Complete installation finished!\n"
+    @echo "\n🎉 Full Extra installation finished!\n"
