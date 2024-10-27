@@ -35,7 +35,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/luccahuguet/rustifier.git
+   mkdir ~/rustifier_programs
+   git clone https://github.com/luccahuguet/rustifier.git ~/rustifier_programs 
    cd rustifier
    ```
 
@@ -48,7 +49,7 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
       ```
          This script will check if Rust, Nushell, and Just are installed. If they're not, it will ask for your permission to install them. These tools are required for Rustifier to function properly.
 
-   2. Restart your shell or run `exec $SHELL` (bash) or run `exec nu` (nushell)
+   2. Restart your shell or run `exec $SHELL` (bash)
 
 3. Install system dependencies:
    - For Ubuntu/Debian-based systems:
@@ -63,15 +64,15 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 4. Install [Helix](https://docs.helix-editor.com/install.html)
     - For instance if you want to build it from source:
-       ```bash
-       git clone https://github.com/helix-editor/helix ~/user_installs/helix
-       cd helix
-       ```
+      ```bash
+      git clone https://github.com/helix-editor/helix ~/rustifier_programs/helix
+      cd helix
+      ```
     - And then:
-       ```bash
-       cargo install --path helix-term --locked
-       ```
-5. Install Wezterm. Clike [here](https://wezfurlong.org/wezterm/install/linux.html) to see many installation options... or for debian/ubuntu systems:
+      ```bash
+      cargo install --path helix-term --locked
+      ```
+5. Install Wezterm. Click [here](https://wezfurlong.org/wezterm/install/linux.html) to see many installation options... or for debian/ubuntu systems:
 
       - Configure the apt repo:
          ```bash
