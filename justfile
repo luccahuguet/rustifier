@@ -4,7 +4,7 @@ set shell := ["nu", "-c"]
 # Package lists
 minimal-packages := "zellij yazi-fm starship"
 full-packages := "zoxide gitui mise"
-optional-packages := "aichat bottom erdtree markdown-oxide onefetch ouch rusty-rain taplo-cli tokei yazi-cli zeitfetch"
+optional-packages := "erdtree onefetch rusty-rain taplo-cli tokei yazi-cli zeitfetch"
 
 # Default recipe shows help
 default:
