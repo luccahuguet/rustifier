@@ -135,12 +135,8 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 ### 3. All Optional Utilities
 Includes everything from the Full Install, plus all of the following:
 
-- [aichat](https://github.com/sigoden/aichat): AI-powered chat tool
-- [bottom](https://github.com/ClementTsang/bottom): System monitor and process viewer
 - [erdtree](https://github.com/solidiquis/erdtree): File-tree visualizer and disk usage analyzer
-- [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide): Markdown parser and renderer
 - [onefetch](https://github.com/o2sh/onefetch): Git repository summary in your terminal
-- [ouch](https://github.com/ouch-org/ouch): Compression and decompression tool
 - [rusty-rain](https://github.com/cowboy8625/rusty-rain): Terminal-based digital rain effect
 - [taplo-cli](https://github.com/tamasfe/taplo): TOML toolkit
 - [tokei](https://github.com/XAMPPRocky/tokei): Code statistics tool
