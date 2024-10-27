@@ -63,48 +63,48 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 4. Install [Helix](https://docs.helix-editor.com/install.html)
     - For instance if you want to build it from source:
-    ```bash
-    git clone https://github.com/helix-editor/helix ~/user_installs/helix
-    cd helix
-    ```
+       ```bash
+       git clone https://github.com/helix-editor/helix ~/user_installs/helix
+       cd helix
+       ```
     - And then:
-    ```bash
-    cargo install --path helix-term --locked
-    ```
+       ```bash
+       cargo install --path helix-term --locked
+       ```
 5. Install Wezterm. Clike [here](https://wezfurlong.org/wezterm/install/linux.html) to see many installation options... or for debian/ubuntu systems:
 
-      - Configure the apt repo
-      ```bash
+      - Configure the apt repo:
+         ```bash
          curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
          echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-      ```
+         ```
 
-      - And then
-      ```bash
+      - And then:
+         ```bash
          sudo apt update
          sudo apt install wezterm
-      ```
+         ```
 
 6. Configure WezTerm:  
    a. Create or open your `~/.wezterm.lua` file  
    b. Add the following content:  
 
-   ```lua
-   -- Pull in the wezterm API
-   local wezterm = require 'wezterm'
-   -- This will hold the configuration.
-   local config = wezterm.config_builder()
-   -- This is where you actually apply your config choices
-   -- For example, changing the color scheme:
-   config.color_scheme = 'Abernathy'
-   -- Spawn a nushell shell in login mode
-   config.default_prog = { 'nu', '-c', "zellij -l welcome --config-dir ~/.config/yazelix/zellij options --layout-dir ~/.config/yazelix/zellij/layouts" }
-   -- Others
-   config.hide_tab_bar_if_only_one_tab = true
-   config.window_decorations = "NONE"
-   -- and finally, return the configuration to wezterm
-   return config
-   ```
+      ```lua
+      -- Pull in the wezterm API
+      local wezterm = require 'wezterm'
+      -- This will hold the configuration.
+      local config = wezterm.config_builder()
+      -- This is where you actually apply your config choices
+      -- For example, changing the color scheme:
+      config.color_scheme = 'Abernathy'
+      -- Spawn a nushell shell in login mode
+      config.default_prog = { 'nu', '-c', "zellij -l welcome --config-dir ~/.config/yazelix/zellij options --layout-dir ~/.config/yazelix/zellij/layouts" }
+      -- Others
+      config.hide_tab_bar_if_only_one_tab = true
+      config.window_decorations = "NONE"
+      -- and finally, return the configuration to wezterm
+      return config
+      ```
 
    Note: For extra configuration, visit: https://wezfurlong.org/wezterm/config/files.html
 
