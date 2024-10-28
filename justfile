@@ -27,7 +27,7 @@ _install-packages packages:
     }
     
     print "\n🚀 Starting package installation...\n"
-    "{{packages}}" | split row ' ' | each { |pkg| install-package $pkg }
+    for pkg in ("{{packages}}" | split row ' ') { install-package $pkg }
     print "\n✅ Package installation complete!\n"
 
 # Clone Yazelix configuration
@@ -78,7 +78,7 @@ install-custom: install-full
     
     if ($selected | length) > 0 {
         print "\n📥 Installing selected packages..."
-        $selected | each { |pkg| just _install-packages $pkg }
+        for pkg in $selected { just _install-packages $pkg }
         print "\n🎉 Custom installation complete!\n"
     } else {
         print "\n⚠️ No optional packages were selected.\n🎉 Installation complete!\n"
