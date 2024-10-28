@@ -14,36 +14,39 @@ default:
         $"(ansi $color)($str)(ansi reset)" 
     }
     
-    # Print header and separator
+    # Print header
     print ""
-    apply_color "cyan_bold" "🚀 Rustifier Installation Options" | print
+    apply_color "cyan_bold" "🚀 Welcome to Rustifier!" | print
+    apply_color "yellow" "This part of the setup install things from cargo" | print
     print ""
-    apply_color "cyan" "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | print
+    apply_color "yellow" "Yazelix is at the core of every installation, providing:" | print
+    apply_color "light_gray" "  • Integrated configuration for Zellij, Yazi, and Helix" | print
+    apply_color "light_gray" "  • Custom keybindings and layouts for seamless workflow" | print
+    apply_color "light_gray" "  • Pre-configured environment setup" | print
     print ""
+    
+    # Create installation options with package details
+    let options = [
+        $"1. Minimal Installation \(honestly, boring\)\n   Packages: {{minimal-packages}}\n"
+        $"2. Full Installation \(now you're graduating from childhood\)\n Minimal plus: {{full-packages}}\n"
+        $"3. Full Extra Installation \(includes some extra utilities\)\n  Full plus: {{optional-packages}}\n"
+        "4. Custom Installation \(picky aren't we?\)\n All from Full and pick your extras\n"
+    ]
 
-    # Print yazelix information first
-    apply_color "yellow_bold" "Yazelix: The Core Integration" | print
-    apply_color "light_gray" "  All installations include Yazelix, which provides:" | print
-    apply_color "light_yellow" "  • Configuration files that integrate Zellij, Yazi, and Helix" | print
-    apply_color "light_yellow" "  • Custom keybindings and layouts for seamless workflow" | print
-    apply_color "light_yellow" "  • Pre-configured environment setup" | print
+    # Present interactive selection menu
+    let selected = $options | input list "Choose your installation type:"
     print ""
-
-    # Print installation options using a helper function
-    def print_option [cmd: string, desc: string, packages: string] {
-        apply_color "magenta_bold" $cmd | print
-        apply_color "light_gray" $desc | print
-        if not ($packages | is-empty) {
-            apply_color "light_green" $"  ($packages)" | print
-        }
-        print ""
+    
+    let command = match ($selected | str substring 0..1 | into int) {
+        1 => "just install-minimal"
+        2 => "just install-full"
+        3 => "just install-extra"
+        4 => "just install-custom"
+        _ => ""
     }
-
-    # Display all installation options
-    print_option "Option 1: just install-minimal" "  The essential package suite:" "{{minimal-packages}}"
-    print_option "Option 2: just install-full" "  Everything from minimal, plus:" "{{full-packages}}"
-    print_option "Option 3: just install-extra" "  Everything from full, plus all optional utilities:" "{{optional-packages}}"
-    print_option "Option 4: just install-custom" "  Everything from full, plus your choice of optional utilities" ""
+    
+    apply_color "cyan" $"Run this command to start installation: ($command)" | print
+    print ""
 
 # Core installation function
 _install-packages packages:
