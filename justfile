@@ -8,11 +8,34 @@ optional-packages := "erdtree onefetch rusty-rain taplo-cli tokei yazi-cli zeitf
 
 # Default recipe shows help
 default:
-    @echo "\nAvailable installation options:"
-    @echo "  just install-minimal  - Installs ({{minimal-packages}})"
-    @echo "  just install-full    - All packages from install-minimal plus {{full-packages}}"
-    @echo "  just install-extra   - All packages from install-full plus {{optional-packages}}"
-    @echo "  just install-custom  - All packages from install-full plus your choice of optional packages\n"
+    #!/usr/bin/env nu
+    
+    def apply_color [color: string, str: string] { 
+        $"(ansi $color)($str)(ansi reset)" 
+    }
+    
+    # Print header and separator
+    print ""
+    apply_color "cyan_bold" "🚀 Rustifier Installation Options" | print
+    print ""
+    apply_color "cyan" "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | print
+    print ""
+
+    # Print installation options using a helper function
+    def print_option [cmd: string, desc: string, packages: string] {
+        apply_color "magenta_bold" $cmd | print
+        apply_color "light_gray" $desc | print
+        if not ($packages | is-empty) {
+            apply_color "light_green" $"  ($packages)" | print
+        }
+        print ""
+    }
+
+    # Display all installation options
+    print_option "just install-minimal" "  The essential package suite:" "{{minimal-packages}}"
+    print_option "just install-full" "  Everything from minimal, plus:" "{{full-packages}}"
+    print_option "just install-extra" "  Everything from full, plus all optional utilities:" "{{optional-packages}}"
+    print_option "just install-custom" "  Everything from full, plus your choice of optional utilities" ""
 
 # Core installation function
 _install-packages packages:
