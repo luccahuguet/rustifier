@@ -28,14 +28,58 @@ default:
     # Create installation options with package details
     let options = [
         $"1. Minimal Installation \(honestly, boring\)\n   Packages: {{minimal-packages}}\n"
-        $"2. Full Installation \(now you're graduating from childhood\)\n Minimal plus: {{full-packages}}\n"
-        $"3. Full Extra Installation \(includes some extra utilities\)\n  Full plus: {{optional-packages}}\n"
-        "4. Custom Installation \(picky aren't we?\)\n All from Full and pick your extras\n"
+        $"2. Full Installation \(now you're graduating from childhood\)\n   Minimal plus: {{full-packages}}\n"
+        $"3. Full Extra Installation \(includes some extra utilities\)\n   Full plus: {{optional-packages}}\n"
+        "4. Custom Installation \(picky aren't we?\)\n   All from Full and pick your extras\n"
+        "5. Show me what each package does \(the curious type, eh?\)\n   Detailed explanation of all packages"
     ]
 
     # Present interactive selection menu
     let selected = $options | input list "Choose your installation type:"
     print ""
+    
+    if ($selected | str substring 0..1 | into int) == 5 {
+        # Show package documentation
+        print "\nMinimal Installation Packages:"
+        print "-----------------------------"
+        apply_color "green_bold" "zellij: " | print -n
+        print "Terminal workspace with panes and tabs"
+        apply_color "green_bold" "yazi-fm: " | print -n
+        print "Terminal file manager with image preview"
+        apply_color "green_bold" "starship: " | print -n
+        print "Customizable cross-shell prompt"
+        
+        print "\nFull Installation Adds:"
+        print "----------------------"
+        apply_color "blue_bold" "zoxide: " | print -n
+        print "Smarter cd command that learns your habits"
+        apply_color "blue_bold" "gitui: " | print -n
+        print "Terminal UI for git with keyboard-driven workflow"
+        apply_color "blue_bold" "mise: " | print -n
+        print "Development tool version manager"
+        
+        print "\nOptional Utilities:"
+        print "------------------"
+        apply_color "purple_bold" "erdtree: " | print -n
+        print "File-tree visualizer and disk usage analyzer"
+        apply_color "purple_bold" "onefetch: " | print -n
+        print "Git repository summary in your terminal"
+        apply_color "purple_bold" "rusty-rain: " | print -n
+        print "Terminal-based digital rain effect"
+        apply_color "purple_bold" "taplo-cli: " | print -n
+        print "TOML toolkit for configuration files"
+        apply_color "purple_bold" "tokei: " | print -n
+        print "Code statistics tool - count your lines of code"
+        apply_color "purple_bold" "yazi-cli: " | print -n
+        print "Command-line interface for Yazi file manager"
+        apply_color "purple_bold" "zeitfetch: " | print -n
+        print "System information tool - show off your setup"
+        
+        print "\nPress Enter to return to the menu..."
+        input
+        just
+        return
+    }
     
     let command = match ($selected | str substring 0..1 | into int) {
         1 => "just install-minimal"
