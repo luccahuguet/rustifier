@@ -35,10 +35,12 @@ default:
     ]
 
     # Present interactive selection menu
-    let selected = $options | input list "Choose your installation type:"
+    let selected = try { $options | input list "Choose your installation type:" } catch { return }
+    if ($selected | is-empty) { return }
     print ""
     
-    if ($selected | str substring 0..1 | into int) == 5 {
+    let number = ( try { $selected | str substring 0..1 | into int } catch { return } )
+    if $number == 5 {
         # Show package documentation
         print "\nMinimal Installation Packages:"
         print "-----------------------------"
@@ -75,19 +77,21 @@ default:
         apply_color "purple_bold" "zeitfetch: " | print -n
         print "System information tool - show off your setup"
         
-        print "\nPress Enter to return to the menu..."
-        input
-        just
+        print "\nPress Enter to return to the menu (or any other key to exit)..."
+        let key = (try { input } catch { return })
+        if ($key | is-empty) { just } else { return }
         return
     }
     
-    let command = match ($selected | str substring 0..1 | into int) {
+    let command = match $number {
         1 => "just install-minimal"
         2 => "just install-full"
         3 => "just install-extra"
         4 => "just install-custom"
         _ => ""
     }
+    
+    if $command == "" { return }
     
     apply_color "cyan" $"Run this command to start installation: ($command)" | print
     print ""
