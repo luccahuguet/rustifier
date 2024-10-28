@@ -74,7 +74,7 @@ install-custom: install-full
     let packages = ["{{optional-packages}}"] | split row ' '
     
     # Present interactive selection menu
-    let selected = $packages | input list --fuzzy --multi "Select optional packages to install (press Space to select, Enter to confirm)"
+    let selected = $packages | input list --multi "Select optional packages to install (Space to select, a to toggle all, Enter to confirm)"
     
     if ($selected | length) > 0 {
         print "\n📥 Installing selected packages..."
