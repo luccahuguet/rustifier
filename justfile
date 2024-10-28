@@ -32,10 +32,10 @@ default:
     }
 
     # Display all installation options
-    print_option "just install-minimal" "  The essential package suite:" "{{minimal-packages}}"
-    print_option "just install-full" "  Everything from minimal, plus:" "{{full-packages}}"
-    print_option "just install-extra" "  Everything from full, plus all optional utilities:" "{{optional-packages}}"
-    print_option "just install-custom" "  Everything from full, plus your choice of optional utilities" ""
+    print_option "Option 1: just install-minimal" "  The essential package suite:" "{{minimal-packages}}"
+    print_option "Option 2: just install-full" "  Everything from minimal, plus:" "{{full-packages}}"
+    print_option "Option 3: just install-extra" "  Everything from full, plus all optional utilities:" "{{optional-packages}}"
+    print_option "Option 4: just install-custom" "  Everything from full, plus your choice of optional utilities" ""
 
 # Core installation function
 _install-packages packages:
