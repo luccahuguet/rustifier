@@ -21,6 +21,14 @@ default:
     apply_color "cyan" "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | print
     print ""
 
+    # Print yazelix information first
+    apply_color "yellow_bold" "Yazelix: The Core Integration" | print
+    apply_color "light_gray" "  All installations include Yazelix, which provides:" | print
+    apply_color "light_yellow" "  • Configuration files that integrate Zellij, Yazi, and Helix" | print
+    apply_color "light_yellow" "  • Custom keybindings and layouts for seamless workflow" | print
+    apply_color "light_yellow" "  • Pre-configured environment setup" | print
+    print ""
+
     # Print installation options using a helper function
     def print_option [cmd: string, desc: string, packages: string] {
         apply_color "magenta_bold" $cmd | print
