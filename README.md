@@ -6,11 +6,12 @@ Rustifier is a tool designed to quickly set up a complete Yazelix environment, i
 
 - [x] Update Yazelix README
 - [x] Create Yazelix video
+- [x] maybe create a rustifier_programs folder in users $HOME?
+- [x] bunch of improvements
+- [x] move system dependencies of nushell into the script
+- [ ] Update the testing table
 - [ ] Add instructions on how to set zoxide
 - [ ] Add instructions on how to set starship
-- [ ] maybe create a rustifier_programs folder in users $HOME?
-- [ ] evaluate moving system dependencies of nushell into the script
-- [ ] Update the testing table
 
 ## Compatibility
 - WARNING: The current version has not been tested yet
